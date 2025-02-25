@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="CSC101">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/homework06.zip!/" />
+      <root url="jar://$PROJECT_DIR$/homework07.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
