@@ -25,7 +25,7 @@ public class Main {
 
         System.out.println("Number of Members: " + members);
         System.out.println("Total Tip Ammount: " + totalTip);
-        System.out.printf("Tip Per Member    :    $%.2f%n", tipCalculation);
+        System.out.printf("Tip Per Member   : %.2f%n",tipCalculation);
     }
 }
 /*
