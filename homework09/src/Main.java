@@ -19,22 +19,15 @@ public class Main {
     public static void main(String[] args) {
         Scanner userMembers = new Scanner(System.in);
         System.out.print("Enter the number of Members: ");
-
-        if (!userMembers.hasNextInt()) {
-            System.out.println("You must enter an integer");
-        }
-        else if (userMembers.nextInt() < 0){
-            System.out.println("You must enter a positive integer");
-        }
-
+        int members = userMembers.nextInt();
 
         Scanner userTotalTip = new Scanner(System.in);
         System.out.print("Enter the total tip ammount: ");
         double totalTip = userTotalTip.nextDouble();
 
-        double tipCalculation = (totalTip / userMembers);
+        double tipCalculation = (totalTip / members);
 
-        System.out.println("Number of Members: " + userMembers);
+        System.out.println("Number of Members: " + members);
         System.out.println("Total Tip Ammount: " + totalTip);
         System.out.printf("Tip Per Member   : %.2f%n",tipCalculation);
         //System.out.println("You must enter a positive integer");
