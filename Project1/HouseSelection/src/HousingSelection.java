@@ -49,7 +49,7 @@ public class HousingSelection {
         Scanner yesNo2 = new Scanner(System.in);
         String useryesNo2;
         while (true) {
-            System.out.println("Are you on Academic Probation?");
+            System.out.println("Are you on Academic Probation? [y/n]");
             useryesNo2 = yesNo2.next();
             if (useryesNo2.equals("y")) {
                 COUNTER += 5;
