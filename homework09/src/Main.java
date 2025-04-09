@@ -24,8 +24,7 @@ public class Main {
             System.out.println("You must enter an integer");
             System.exit( -1);
         }
-        int members = userMembers.nextInt();
-        if (members <= 0){
+        if (userMembers.nextInt() <= 0){
             System.out.println("You must enter a positive integer");
             System.exit(-1);
         }
@@ -44,10 +43,10 @@ public class Main {
         }
 
         //total tip calculations
-        double tipCalculation = (totalTip / members);
+        double tipCalculation = (totalTip / userMembers.nextInt());
 
         //output
-        System.out.println("Number of Members: " + members);
+        System.out.println("Number of Members: " + userMembers);
         System.out.println("Total Tip Ammount: " + totalTip);
         System.out.printf("Tip Per Member    :    %.2f%n", tipCalculation);
     }
