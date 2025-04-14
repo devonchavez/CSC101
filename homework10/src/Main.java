@@ -16,6 +16,11 @@ public class Main {
             } else {
                 System.out.println("Number is too high!");
             }
+
+        }
+        if (!guess.hasNextInt()){
+            System.out.println("Enter an integer!");
+            System.exit(-1);
         }
 
         System.out.println("Yes, the number is " + numberToGuess);
