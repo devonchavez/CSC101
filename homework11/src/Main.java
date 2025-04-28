@@ -14,7 +14,7 @@ public class Main {
                 continue;
             }
 
-            if (input.length())
+            //if (input.length())
 
         }
 
