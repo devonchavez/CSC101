@@ -11,28 +11,26 @@ public class RestaurantCheckManager {
         System.out.println("Welcome to the check manager, please follow the instructions below!\n");
 
         while (true) {
-            while (true){
             System.out.print("Total sale amount: ");
             double sale = input.nextDouble();
-            if (sale < 0) {
+            while (sale < 0) {
                 System.out.print("Sale cannot be negative. Enter again: ");
                 sale = input.nextDouble();
             }
 
             System.out.print("Tip amount: ");
             double tip = input.nextDouble();
-            if (tip < 0) {
+            while (tip < 0) {
                 System.out.print("Tip cannot be negative. Enter again: ");
                 tip = input.nextDouble();
             }
 
             System.out.print("Total amount: ");
             double total = input.nextDouble();
-            if (total < 0) {
+            while (total < 0) {
                 System.out.print("Total cannot be negative. Enter again: ");
                 total = input.nextDouble();
             }
-
 
             if (tip == 0 && total == 0) {
                 total = sale;
@@ -52,7 +50,6 @@ public class RestaurantCheckManager {
                 }
             }
 
-
             totalSales += sale;
             totalTips += tip;
             checkCount++;
@@ -67,7 +64,7 @@ public class RestaurantCheckManager {
                 break;
             }
         }
-        
+
         System.out.printf("\nThe total sale amount is: %.1f\n", totalSales);
         System.out.printf("The total pooled tip amount is: %.1f\n", totalTips);
 

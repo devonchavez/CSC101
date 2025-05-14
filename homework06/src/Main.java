@@ -8,9 +8,28 @@ After computing the perimeter of each shape, print the shape's perimeter value t
 We are going to use the following value of PI: 3.1415926
  */
 
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
+        System.out.println("Enter a some numbers: ");
+        Scanner input = new Scanner(System.in);
+        int sum = 0;
+        int counter = 0;
+
+        while(input.hasNextInt()){
+            int number = input.nextInt();
+            if (number == -1){
+                break;
+            }
+            sum += number;
+            counter++;
+        }
+
+        System.out.println("avg is: " + sum/counter );
+
         //Circumference of Circle
+        /*
         final double pi = 3.1415926;
         double radius = 5.4;
         double circumference;
@@ -26,7 +45,9 @@ public class Main {
 
         perimeter = side1 + side2 + side3;
         System.out.println("The perimeter of a Triangle with sides " + side1 + " " + side2 + " "+ side3 + " is: " + perimeter);
+        */
     }
+
 }
 
 /*
