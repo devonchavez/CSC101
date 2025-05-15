@@ -189,7 +189,7 @@ public class Main {
 
             //checking winner at rounds 5 and up
             numberOfMoves++;
-            if (numberOfMoves >= 5 && checkWinner(board, currentPlayer)) {
+            if (numberOfMoves >= 5 && checkWinner(board, human)) {
                 displayBoard(board);
                 System.out.printf("Player %c wins!\n", currentPlayer);
                 break;
@@ -205,11 +205,11 @@ public class Main {
             currentPlayer = bot;
 
             int[] botMove = botMoves(board, bot, human);
-            insertMove(board, botMove[0], botMove[1], bot);
+            insertMove(board, botMove[0], botMove[1], currentPlayer);
             System.out.printf("Bot placed at (%d, %d)\n", botMove[0], botMove[1]);
             numberOfMoves++;
 
-            if (numberOfMoves >= 5 && checkWinner(board, bot)) {
+            if (numberOfMoves >= 5 && checkWinner(board, currentPlayer)) {
                 displayBoard(board);
                 System.out.println("Bot wins!");
                 break;
