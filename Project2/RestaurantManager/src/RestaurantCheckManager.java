@@ -4,32 +4,49 @@ public class RestaurantCheckManager {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
-        double totalSales = 0;
-        double totalTips = 0;
+        int totalSales = 0;
+        int totalTips = 0;
         int checkCount = 0;
 
         System.out.println("Welcome to the check manager, please follow the instructions below!\n");
 
         while (true) {
-            System.out.print("Total sale amount: ");
-            double sale = input.nextDouble();
-            while (sale < 0) {
-                System.out.print("Sale cannot be negative. Enter again: ");
-                sale = input.nextDouble();
+            int sale, tip, total;
+
+            while (true) {
+                System.out.print("Enter total check amount: ");
+                if (input.hasNextInt()) {
+                    sale = input.nextInt();
+                    if (sale >= 0) break;
+                    else System.out.println("Sale cannot be negative. Re-enter the whole check.\n");
+                } else {
+                    System.out.println("Invalid input. Please enter a whole number.");
+                    input.next();
+                }
             }
 
-            System.out.print("Tip amount: ");
-            double tip = input.nextDouble();
-            while (tip < 0) {
-                System.out.print("Tip cannot be negative. Enter again: ");
-                tip = input.nextDouble();
+            while (true) {
+                System.out.print("Enter tip amount: ");
+                if (input.hasNextInt()) {
+                    tip = input.nextInt();
+                    if (tip >= 0) break;
+                    else System.out.println("Tip cannot be negative. Re-enter the whole check.\n");
+                } else {
+                    System.out.println("Invalid input. Please enter a whole number.");
+                    input.next();
+                }
             }
 
-            System.out.print("Total amount: ");
-            double total = input.nextDouble();
-            while (total < 0) {
-                System.out.print("Total cannot be negative. Enter again: ");
-                total = input.nextDouble();
+            while (true) {
+                System.out.print("Enter total amount: ");
+                if (input.hasNextInt()) {
+                    total = input.nextInt();
+                    if (total >= 0) break;
+                    else System.out.println("Total cannot be negative. Re-enter the whole check.\n");
+                } else {
+                    System.out.println("Invalid input. Please enter a whole number.");
+                    input.next();
+                }
             }
 
             if (tip == 0 && total == 0) {
@@ -42,7 +59,7 @@ public class RestaurantCheckManager {
                 }
             } else if (tip > 0 && total == 0) {
                 total = sale + tip;
-            } else if (Math.abs((sale + tip) - total) > 0.01) {
+            } else if ((sale + tip) != total) {
                 tip = total - sale;
                 if (tip < 0) {
                     tip = 0;
@@ -54,28 +71,27 @@ public class RestaurantCheckManager {
             totalTips += tip;
             checkCount++;
 
-            System.out.printf("Check count: %d\n", checkCount);
-            System.out.printf("Total sale so far: %.1f\n", totalSales);
-            System.out.printf("Total pooled tip so far: %.1f\n", totalTips);
+            System.out.printf("Total Sales so far: %d\n", totalSales);
+            System.out.printf("Current pooled tips so far %d\n", totalTips);
+            System.out.printf("Number of Checks:   %d\n", checkCount);
 
-            System.out.print("Do you want to stop (y/n)? ");
-            String choice = input.next();
-            if (choice.equalsIgnoreCase("y")) {
+            System.out.print("Do you want to stop(y/n)? ");
+            String answer = input.next();
+            if (answer.equalsIgnoreCase("y")) {
                 break;
             }
+
+            System.out.println();
         }
 
-        System.out.printf("\nThe total sale amount is: %.1f\n", totalSales);
-        System.out.printf("The total pooled tip amount is: %.1f\n", totalTips);
+        System.out.printf("\nTip allocation for $%.2f      in tips.\n", (double) totalTips);
 
-        System.out.printf("\nTip allocation for $%.2f      in tips.\n", totalTips);
+        double serversTotal = totalTips * 0.70;
+        double serverShare = serversTotal / 2;
 
-        double serverTotal = totalTips * 0.70;
-        double serverEach = serverTotal / 2;
-
-        System.out.printf("Servers              : $%.2f\n", serverTotal);
-        System.out.printf("       Server 1      : $%.2f\n", serverEach);
-        System.out.printf("       Server 2      : $%.2f\n", serverEach);
+        System.out.printf("Servers              : $%.2f\n", serversTotal);
+        System.out.printf("       Server 1      : $%.2f\n", serverShare);
+        System.out.printf("       Server 2      : $%.2f\n", serverShare);
         System.out.println("       Server 3      : $0.00    (did not work)");
 
         double kitchenTotal = totalTips * 0.20;
@@ -93,9 +109,9 @@ public class RestaurantCheckManager {
 
         System.out.printf("Host/Hostess         : $%.2f\n", host);
         System.out.printf("Busser               : $%.2f\n", busser);
-
     }
 }
+
 /*
 ●	70% - Servers: 3 (2 were on job that day; 1 was absent)
 ●	10% - Chef: 1

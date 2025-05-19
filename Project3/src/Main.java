@@ -74,7 +74,7 @@ public class Main {
     //botplayer that plays alongside user
     public static int[] botMoves(char[][] board, char bot, char human) {
 
-        //array that adresses corners and sides
+        //arrays that adresses corners and sides
         int[][] corners = {{0,0}, {0,2}, {2,0}, {2,2}};
         int[][] sides = {{0,1}, {1,0}, {1,2}, {2,1}};
 
@@ -139,7 +139,7 @@ public class Main {
         char bot = CROSS;
         char currentPlayer = human;
         int numberOfMoves = 0;
-        int rounds = 0;
+        int rounds = 1;
         Scanner input = new Scanner(System.in);
         char[][] board = {
                 {' ', ' ', ' '},
@@ -187,7 +187,7 @@ public class Main {
                 validMove = true;
             }
 
-            //checking winner at rounds 5 and up
+            //checking winner at total game moves 5 and up
             numberOfMoves++;
             if (numberOfMoves >= 5 && checkWinner(board, human)) {
                 displayBoard(board);
@@ -195,6 +195,7 @@ public class Main {
                 break;
             }
 
+            //tie checker
             if (numberOfMoves == 9) {
                 displayBoard(board);
                 System.out.println("It's a tie!");
@@ -204,6 +205,7 @@ public class Main {
             //switch to bot
             currentPlayer = bot;
 
+            //placing bot move
             int[] botMove = botMoves(board, bot, human);
             insertMove(board, botMove[0], botMove[1], currentPlayer);
             System.out.printf("Bot placed at (%d, %d)\n", botMove[0], botMove[1]);
@@ -227,7 +229,3 @@ public class Main {
         }
     }
 }
-
-
-
-
